@@ -3,7 +3,7 @@
   "displayName": "QuickConversion",
   "description": "Enable you to convert code blocks faster",
   "publisher": "chenchunyang",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.61.0"
   },
@@ -11,18 +11,39 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:QuickConversion.change"
+    "onCommand:QuickConversion.change",
+    "onCommand:QuickConversion.change2"
   ],
   "main": "./extension.js",
-
   "contributes": {
     "keybindings": [
       {
         "command": "QuickConversion.change",
-        "key": "ctrl+f2",
+        "key": "shift+1",
+        "mac": "shift+1",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "QuickConversion.change2",
+        "key": "shift+2",
+        "mac": "shift+2",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "QuickConversion配置",
+      "properties": {
+        "conversion.transOpts": {
+          "type": "string",
+          "enum": [
+            "fm",
+            "formatMessage"
+          ],
+          "default": "formatMessage",
+          "description": "使用fm或者formatMessage"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
